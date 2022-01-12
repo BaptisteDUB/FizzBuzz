@@ -1,0 +1,12 @@
+FROM node:16
+# Create app directory
+WORKDIR /app
+
+COPY ./app/package*.json ./
+
+# Install global dependencies
+RUN npm install
+
+COPY ./app .
+
+CMD [ "node", "app/src/index.js" ]
