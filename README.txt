@@ -1,4 +1,4 @@
-Ce document retrace le raisonnement depuis le début du tp pour faire tourner à présent passer direct à l'étape 7
+Ce document retrace mon raisonnement depuis le début du tp pour faire tourner à présent passer direct à l'étape 7
 
 1) Build l'image à partir du dockerfile -t pour definir nom et tag
 docker build . -t fizzbuzz:v1.0
@@ -26,12 +26,19 @@ docker pull mongo
 docker run --rm -d -it -v ${pwd}:/app --name mongodb mongo
 docker exec -it mongodb /bin/bash
 
-7) Avec docker compose
+7) Avec docker compose (penser à créer un dossier appelé "mongo" à la racine du projet et à créer un fichier .ENV à la racine également)
 
 docker-compose up 
 
+Pour kill -- > docker-compose down
+
 docker-compose exec mongo_service /bin/bash
---> mongosh fizzbuzz -u admin -p Mdp64
+initialisation
+--> use fizzbuzz
+--> db.createUser()
+--> db.createCollection('games')
+pour se connecter ensuite et voir le contenu de la collection apres avoir joué
+--> mongosh fizzbuzz -u <user> -p <mdp>
 --> db.games.find()
 
 docker-compose exec fizzbuzz_service bash
